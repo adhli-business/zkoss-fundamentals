@@ -1,218 +1,412 @@
 <zk>
-	<style>
-		@media screen and (max-width: 768px) {
-			.grid-responsive .z-column-content {
-				font-size: 12px;
-			}
-			.grid-responsive .z-row {
-				flex-direction: column;
-			}
-			.grid-responsive .z-row > * {
-				width: 100% !important;
-				display: block;
-				margin-bottom: 5px;
-			}
-			.grid-responsive .z-button {
-				width: 100% !important;
-			}
-			.grid-responsive .z-label {
-				white-space: normal;
-			}
-		}
-	</style>
+    <style>
+        @media screen and (max-width: 768px) {
+            .grid-responsive .z-column-content {
+                font-size: 12px;
+            }
+            .grid-responsive .z-row {
+                flex-direction: column;
+            }
+            .grid-responsive .z-row > * {
+                width: 100% !important;
+                display: block;
+                margin-bottom: 5px;
+            }
+            .grid-responsive .z-button {
+                width: 100% !important;
+            }
+            .grid-responsive .z-label {
+                white-space: normal;
+            }
+        }
+    </style>
 
-	<window title="📋 Dashboard Penilaian Data Technology MT Batch 20" border="normal" width="90%" hflex="min" style="margin: auto; margin-top: 20px;">
-		<zscript><![CDATA[
-			void hideAllDetails() {
-				detailBox1.setVisible(false);
-				detailBox2.setVisible(false);
-				detailBox3.setVisible(false);
-				detailBox4.setVisible(false);
-				detailBox5.setVisible(false);
-				detailBox6.setVisible(false);
-				detailBox7.setVisible(false);
-				detailBox8.setVisible(false);
-				detailBox9.setVisible(false);
-				detailBox10.setVisible(false);
-				detailBox11.setVisible(false);
-				detailBox12.setVisible(false);
-				detailBox13.setVisible(false);
-			}
-		]]></zscript>
+    <window title="📋 Dashboard Penilaian Data Technology MT Batch 20" border="normal" width="90%" hflex="min" style="margin: auto; margin-top: 20px;">
+        <zscript><![CDATA[
+            import org.zkoss.zk.ui.util.Clients;
+            import org.zkoss.zul.ListModelList;
+            import java.util.ArrayList;
+            import java.util.List;
+            import org.zkoss.zk.ui.event.EventListener;
+            import org.zkoss.zk.ui.event.Event;
 
-		<!-- Search Bar -->
-		<hlayout style="margin-bottom: 20px; flex-wrap: wrap;">
-			<textbox placeholder="Cari berdasarkan nama..." hflex="1" style="max-width: 300px;"/>
-			<button label="🔍 Cari"/>
-		</hlayout>
+            // Data Model for a participant
+            public class Participant {
+                private String name;
+                private List grades = new ArrayList();
 
-		<!-- List Nama -->
-		<grid width="100%" sclass="grid-responsive" style="margin-bottom: 20px;">
-			<columns>
-				<column label="Nama Peserta" width="70%"/>
-				<column label="Aksi" width="30%"/>
-			</columns>
-			<rows>
-				<row>
-					<label value="Angella Ananta Batubara"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox1.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Putra Adhli Falah"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox2.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Marcella Aurelia Yatijan"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox3.setVisible(true);"/>
-				</row>
-			</rows>
-				<!--	<row>
-					<label value="Willman"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox4.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Alice Shizuka Hutagaol"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox5.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Ahmad Hafizh Assa&apos;ad"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox6.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Michaell Abelard Hendra"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox7.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Raven Daniel Martin"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox8.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Nabila Karin"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox9.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Ahmad Ardra D"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox10.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Leonard Sean Lee"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox11.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Adenawati Hasim"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox12.setVisible(true);"/>
-				</row>
-				<row>
-					<label value="Theopatra Kenny S"/>
-					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox13.setVisible(true);"/>
-				</row>-->
-		</grid>
+                public Participant(String name) {
+                    this.name = name;
+                }
 
-		<!-- Detail Boxes -->
-		<groupbox id="detailBox1" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Angella Ananta Batubara"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
+                public String getName() {
+                    return name;
+                }
 
-		<groupbox id="detailBox2" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Putra Adhli Falah"/>
-			<grid width="100%" sclass="grid-responsive">
-				<columns>
-					<column label="Course" width="50%"/>
-					<column label="Nilai" width="25%"/>
-					<column label="Aksi" width="25%"/>
-				</columns>
-				<rows>
-					<row>
-						<label value="SQL Fundamentals"/>
-						<label value="85"/>
-						<hlayout spacing="10px" hflex="1">
-							<button label="Edit" width="70px"/>
-							<button label="Delete" width="100px" style="background-color: red; color: white; border: none;"/>
-						</hlayout>
-					</row>
-					<row>
-						<label value="Python Basics"/>
-						<label value="88"/>
-						<hlayout spacing="10px" hflex="1">
-							<button label="Edit" width="70px"/>
-							<button label="Delete" width="100px" style="background-color: red; color: white; border: none;"/>
-						</hlayout>
-					</row>
-				</rows>
-			</grid>
-		</groupbox>
+                public void setName(String name) {
+                    this.name = name;
+                }
 
-		<groupbox id="detailBox3" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Marcella Aurelia Yatijan"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
+                public List getGrades() {
+                    return grades;
+                }
 
-		<!-- Detail Boxes 4 - 13 (dibiarkan seperti semula) -->
-		<groupbox id="detailBox4" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Willman"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox5" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Alice Shizuka Hutagaol"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox6" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Ahmad Hafizh Assa&apos;ad"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox7" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Michaell Abelard Hendra"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox8" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Raven Daniel Martin"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox9" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Nabila Karin"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox10" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Ahmad Ardra D"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox11" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Leonard Sean Lee"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox12" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Adenawati Hasim"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
-		<groupbox id="detailBox13" visible="false" mold="3d" width="100%">
-			<caption label="📄 Detail Nilai - Theopatra Kenny S"/>
-			<label value="(Data belum tersedia)"/>
-		</groupbox>
+                public void setGrades(List grades) {
+                    this.grades = grades;
+                }
 
-		<!-- Form Tambah Data -->
-		<groupbox mold="3d" width="100%" style="margin-top: 20px;">
-			<caption label="➕ Tambah Data Penilaian Baru"/>
-			<grid width="100%" sclass="grid-responsive">
-				<rows>
-					<row>
-						<label value="Nama:" width="100px"/>
-						<textbox hflex="1" placeholder="Masukkan nama"/>
-					</row>
-					<row>
-						<label value="Course:" width="100px"/>
-						<textbox hflex="1" placeholder="Masukkan nama course"/>
-					</row>
-					<row>
-						<label value="Nilai:" width="100px"/>
-						<intbox width="100px"/>
-					</row>
-					<row>
-						<separator/>
-						<button label="💾 Simpan"/>
-					</row>
-				</rows>
-			</grid>
-		</groupbox>
-	</window>
+                public void addGrade(Grade grade) {
+                    this.grades.add(grade);
+                }
+
+                public void removeGrade(Grade grade) {
+                    this.grades.remove(grade);
+                }
+                
+                // equals and hashCode are important for comparing objects, e.g., if (selectedParticipant.equals(selectedParticipantForNewGrade))
+                // Removed @Override annotations as BeanShell doesn't support them directly in zscript
+                public boolean equals(Object o) {
+                    if (this == o) return true;
+                    if (o == null || getClass() != o.getClass()) return false;
+                    Participant that = (Participant) o;
+                    return name != null ? name.equals(that.name) : that.name == null;
+                }
+
+                public int hashCode() {
+                    return name != null ? name.hashCode() : 0;
+                }
+            }
+
+            // Data Model for a grade
+            public class Grade {
+                private String course;
+                private int score;
+
+                public Grade(String course, int score) {
+                    this.course = course;
+                    this.score = score;
+                }
+
+                public String getCourse() {
+                    return course;
+                }
+
+                public void setCourse(String course) {
+                    this.course = course;
+                }
+
+                public int getScore() {
+                    return score;
+                }
+
+                public void setScore(int score) {
+                    this.score = score;
+                }
+            }
+
+            // List of all participants
+            ListModelList participantModel = new ListModelList();
+
+            // Currently selected participant for detail view
+            Participant selectedParticipant = null;
+
+            // NEW: Currently selected participant for the "Add Grade" form
+            Participant selectedParticipantForNewGrade = null;
+
+
+            // Function to show details for a selected participant
+            void showParticipantDetails(Participant participant) {
+                selectedParticipant = participant;
+                detailBox.setVisible(true);
+                detailBoxCaption.setLabel("📄 Detail Nilai - " + participant.getName());
+                gradeListbox.setModel(new ListModelList(participant.getGrades()));
+            }
+
+            // Add new participant
+            void addParticipant() {
+                String name = newParticipantNameTextbox.getValue();
+                if (name != null && !name.trim().isEmpty()) {
+                    Participant newParticipant = new Participant(name.trim());
+                    participantModel.add(newParticipant);
+                    newParticipantNameTextbox.setValue("");
+                    Clients.showNotification("Peserta '" + name + "' berhasil ditambahkan!", "info", null, "top_center", 2000);
+                } else {
+                    Clients.showNotification("Nama peserta tidak boleh kosong!", "warning", null, "top_center", 2000);
+                }
+            }
+
+            // Add new grade for selected participant (in detail view)
+            void addGrade() {
+                if (selectedParticipant == null) {
+                    Clients.showNotification("Pilih peserta terlebih dahulu untuk menambah nilai.", "warning", null, "top_center", 2000);
+                    return;
+                }
+
+                String course = newCourseTextbox.getValue();
+                // Get value from intbox directly (already validated by constraint)
+                Integer scoreObj = newScoreIntbox.getValue();
+                int score = (scoreObj != null) ? scoreObj.intValue() : -1; // Default to -1 if null, though constraint should prevent null
+
+                if (course != null && !course.trim().isEmpty() && score >= 0 && score <= 100) {
+                    Grade newGrade = new Grade(course.trim(), score);
+                    selectedParticipant.addGrade(newGrade);
+                    gradeListbox.setModel(new ListModelList(selectedParticipant.getGrades())); // Refresh the listbox
+                    newCourseTextbox.setValue("");
+                    newScoreIntbox.setValue(null);
+                    Clients.showNotification("Nilai untuk " + selectedParticipant.getName() + " berhasil ditambahkan!", "info", null, "top_center", 2000);
+                } else {
+                    Clients.showNotification("Course dan nilai (0-100) tidak valid!", "warning", null, "top_center", 2000);
+                }
+            }
+
+            // NEW: Event listener for participant combobox selection
+            void onSelectParticipantForNewGrade() {
+                // Ensure an item is actually selected and it has a value
+                if (participantCombobox.getSelectedItem() != null) {
+                    selectedParticipantForNewGrade = (Participant) participantCombobox.getSelectedItem().getValue();
+                } else {
+                    selectedParticipantForNewGrade = null; // No participant selected
+                }
+            }
+
+            // NEW: Add new grade using the global form
+            void addGradeForParticipant() {
+                if (selectedParticipantForNewGrade == null) {
+                    Clients.showNotification("Pilih peserta terlebih dahulu dari dropdown.", "warning", null, "top_center", 2000);
+                    return;
+                }
+
+                String course = newCourseTextboxGlobal.getValue();
+                // Get value from intbox directly (already validated by constraint)
+                Integer scoreObj = newScoreIntboxGlobal.getValue();
+                int score = (scoreObj != null) ? scoreObj.intValue() : -1; // Default to -1 if null
+
+                if (course != null && !course.trim().isEmpty() && score >= 0 && score <= 100) {
+                    Grade newGrade = new Grade(course.trim(), score);
+                    selectedParticipantForNewGrade.addGrade(newGrade);
+
+                    // Clear the form
+                    newCourseTextboxGlobal.setValue("");
+                    newScoreIntboxGlobal.setValue(null);
+                    participantCombobox.setSelectedItem(null); // Clear dropdown selection
+                    selectedParticipantForNewGrade = null; // Clear the selected participant variable
+
+                    // If the added grade is for the currently viewed participant, refresh their detail listbox
+                    if (selectedParticipant != null && selectedParticipant.equals(newParticipant)) { // This line might need selectedParticipantForNewGrade instead of newParticipant
+                         // Change: use selectedParticipantForNewGrade here, as 'newParticipant' is not defined in this scope.
+                         // However, the condition if (selectedParticipant != null && selectedParticipant.equals(selectedParticipantForNewGrade))
+                         // is the correct logic already. The comment was confusing.
+                         // This ensures the detail box is updated if the selected participant is the one we just added a grade to.
+                        gradeListbox.setModel(new ListModelList(selectedParticipant.getGrades()));
+                    }
+                    Clients.showNotification("Nilai untuk " + selectedParticipantForNewGrade.getName() + " berhasil ditambahkan!", "info", null, "top_center", 2000);
+
+                } else {
+                    Clients.showNotification("Course dan nilai (0-100) tidak valid!", "warning", null, "top_center", 2000);
+                }
+            }
+
+            // Edit grade
+            void editGrade(Grade gradeToEdit) {
+                String jsPromptCourse = "prompt('Enter new course name for " + gradeToEdit.getCourse() + ":', '" + gradeToEdit.getCourse() + "');";
+                String newCourse = Clients.evalJavaScript(jsPromptCourse);
+
+                String jsPromptScore = "prompt('Enter new score for " + gradeToEdit.getCourse() + ":', '" + gradeToEdit.getScore() + "');";
+                String newScoreStr = Clients.evalJavaScript(jsPromptScore);
+
+                if (newCourse != null && !newCourse.trim().isEmpty() && newScoreStr != null) {
+                    try {
+                        int newScore = Integer.parseInt(newScoreStr);
+                        if (newScore >= 0 && newScore <= 100) {
+                            gradeToEdit.setCourse(newCourse.trim());
+                            gradeToEdit.setScore(newScore);
+                            gradeListbox.setModel(new ListModelList(selectedParticipant.getGrades())); // Refresh the listbox
+                            Clients.showNotification("Nilai berhasil diupdate!", "info", null, "top_center", 2000);
+                        } else {
+                            Clients.showNotification("Nilai harus antara 0-100!", "error", null, "top_center", 2000);
+                        }
+                    } catch (NumberFormatException e) {
+                        Clients.showNotification("Nilai harus angka!", "error", null, "top_center", 2000);
+                    }
+                } else {
+                    Clients.showNotification("Update dibatalkan.", "info", null, "top_center", 2000);
+                }
+            }
+
+            // Delete grade
+            void deleteGrade(Grade gradeToDelete) {
+                if (Clients.showConfirm("Yakin ingin menghapus nilai " + gradeToDelete.getCourse() + " (" + gradeToDelete.getScore() + ")?")) {
+                    selectedParticipant.removeGrade(gradeToDelete);
+                    gradeListbox.setModel(new ListModelList(selectedParticipant.getGrades())); // Refresh the listbox
+                    Clients.showNotification("Nilai berhasil dihapus!", "info", null, "top_center", 2000);
+                }
+            }
+
+            // New method for search logic
+            void performSearch() {
+                String searchText = searchTextbox.getValue().toLowerCase();
+                List filteredParticipants = new ArrayList();
+                for (Object pObj : participantModel) {
+                    Participant p = (Participant) pObj;
+                    if (p.getName().toLowerCase().contains(searchText)) {
+                        filteredParticipants.add(p);
+                    }
+                }
+                participantListbox.setModel(new ListModelList(filteredParticipants));
+            }
+
+            // New method to display all participants
+            void showAllParticipants() {
+                participantListbox.setModel(participantModel);
+                searchTextbox.setValue("");
+            }
+
+            // Initial dummy data
+            Participant p1 = new Participant("Angella Ananta Batubara");
+            p1.addGrade(new Grade("Data Modeling", 90));
+            p1.addGrade(new Grade("Machine Learning Basics", 80));
+            participantModel.add(p1);
+
+            Participant p2 = new Participant("Putra Adhli Falah");
+            p2.addGrade(new Grade("SQL Fundamentals", 85));
+            p2.addGrade(new Grade("Python Basics", 88));
+            participantModel.add(p2);
+
+            Participant p3 = new Participant("Marcella Aurelia Yatijan");
+            participantModel.add(p3);
+            
+            Participant p4 = new Participant("Lele");
+            participantModel.add(p4);
+        ]]></zscript>
+
+        <hlayout style="margin-bottom: 20px; flex-wrap: wrap;">
+            <textbox id="searchTextbox" placeholder="Cari berdasarkan nama..." hflex="1" style="max-width: 300px;"/>
+            <button label="🔍 Cari" onClick="performSearch();"/>
+            <button label="Tampilkan Semua" onClick="showAllParticipants();"/>
+        </hlayout>
+
+        <listbox id="participantListbox" width="100%" sclass="grid-responsive" model="${participantModel}" emptyMessage="Tidak ada peserta.">
+            <listhead>
+                <listheader label="Nama Peserta" width="70%"/>
+                <listheader label="Aksi" width="30%"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.name}"/>
+                    <listcell>
+                        <button label="ℹ️ Detail">
+                            <attribute name="onClick">
+                                <![CDATA[
+                                    // This is the problematic line 295, if error persists here
+                                    showParticipantDetails(each);
+                                ]]>
+                            </attribute>
+                        </button>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+
+        <groupbox id="detailBox" visible="false" mold="3d" width="100%" style="margin-top: 20px;">
+            <caption id="detailBoxCaption" label="📄 Detail Nilai"/>
+            <vlayout>
+                <label value="Tidak ada data nilai tersedia." visible="${selectedParticipant != null and empty selectedParticipant.grades}"/>
+                <listbox id="gradeListbox" width="100%" sclass="grid-responsive" emptyMessage="Belum ada nilai untuk peserta ini.">
+                    <listhead>
+                        <listheader label="Course" width="50%"/>
+                        <listheader label="Nilai" width="25%"/>
+                        <listheader label="Aksi" width="25%"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                            <listcell label="${each.course}"/>
+                            <listcell label="${each.score}"/>
+                            <listcell>
+                                <hlayout spacing="10px">
+                                    <button label="Edit" width="70px">
+                                        <attribute name="onClick">
+                                            <![CDATA[
+                                                editGrade(each);
+                                            ]]>
+                                        </attribute>
+                                    </button>
+                                    <button label="Delete" style="background-color: red; color: white; border: none;" width="100px">
+                                        <attribute name="onClick">
+                                            <![CDATA[
+                                                deleteGrade(each);
+                                            ]]>
+                                        </attribute>
+                                    </button>
+                                </hlayout>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+                <separator/>
+                <groupbox mold="3d" width="100%" style="margin-top: 10px;">
+                    <caption label="➕ Tambah Nilai untuk Peserta Ini"/>
+                    <grid width="100%" sclass="grid-responsive">
+                        <rows>
+                            <row>
+                                <label value="Course:" width="100px"/>
+                                <textbox id="newCourseTextbox" hflex="1" placeholder="Masukkan nama course"/>
+                            </row>
+                            <row>
+                                <label value="Nilai:" width="100px"/>
+                                <intbox id="newScoreIntbox" width="100px" constraint="no empty,0~100:Nilai harus antara 0 dan 100"/>
+                            </row>
+                            <row>
+                                <separator/>
+                                <button label="💾 Tambah Nilai" onClick="addGrade();"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </groupbox>
+            </vlayout>
+        </groupbox>
+
+        <groupbox mold="3d" width="100%" style="margin-top: 20px;">
+            <caption label="➕ Tambah Course &amp; Nilai untuk Peserta"/>
+            <grid width="100%" sclass="grid-responsive">
+                <rows>
+                    <row>
+                        <label value="Pilih Peserta:" width="100px"/>
+                        <combobox id="participantCombobox" model="${participantModel}" hflex="1" placeholder="Pilih peserta..." onSelect="onSelectParticipantForNewGrade();">
+                            <template name="model">
+                                <comboitem label="${each.name}" value="${each}"/>
+                            </template>
+                        </combobox>
+                    </row>
+                    <row>
+                        <label value="Course:" width="100px"/>
+                        <textbox id="newCourseTextboxGlobal" hflex="1" placeholder="Masukkan nama course"/>
+                    </row>
+                    <row>
+                        <label value="Nilai:" width="100px"/>
+                        <intbox id="newScoreIntboxGlobal" width="100px" constraint="no empty,0~100:Nilai harus antara 0 dan 100"/>
+                    </row>
+                    <row>
+                        <separator/>
+                        <button label="💾 Tambah Data" onClick="addGradeForParticipant();"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+
+        <groupbox mold="3d" width="100%" style="margin-top: 20px;">
+            <caption label="➕ Tambah Peserta Baru"/>
+            <grid width="100%" sclass="grid-responsive">
+                <rows>
+                    <row>
+                        <label value="Nama Peserta:" width="100px"/>
+                        <textbox id="newParticipantNameTextbox" hflex="1" placeholder="Masukkan nama peserta"/>
+                    </row>
+                    <row>
+                        <separator/>
+                        <button label="💾 Simpan Peserta" onClick="addParticipant();"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+    </window>
 </zk>
