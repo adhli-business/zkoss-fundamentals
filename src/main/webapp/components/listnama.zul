@@ -1,0 +1,63 @@
+<zk>
+	<window>
+		<grid width="100%" sclass="grid-responsive" style="margin-bottom: 20px;">
+			<columns>
+				<column label="Nama Peserta" width="70%"/>
+				<column label="Aksi" width="30%"/>
+			</columns>
+			<rows>
+				<row>
+					<label value="Angella Ananta Batubara"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox1.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Putra Adhli Falah"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox2.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Marcella Aurelia Yatijan"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox3.setVisible(true);"/>
+				</row>
+			</rows><!--	<row>
+					<label value="Willman"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox4.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Alice Shizuka Hutagaol"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox5.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Ahmad Hafizh Assa&apos;ad"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox6.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Michaell Abelard Hendra"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox7.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Raven Daniel Martin"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox8.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Nabila Karin"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox9.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Ahmad Ardra D"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox10.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Leonard Sean Lee"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox11.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Adenawati Hasim"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox12.setVisible(true);"/>
+				</row>
+				<row>
+					<label value="Theopatra Kenny S"/>
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox13.setVisible(true);"/>
+				</row>-->
+		</grid>
+	</window>
+</zk>

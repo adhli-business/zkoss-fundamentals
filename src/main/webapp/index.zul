@@ -1,4 +1,9 @@
 <zk>
+	<window>
+		<!-- import template -->
+		<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
+	</window>
+
     <style>
         @media screen and (max-width: 768px) {
             .grid-responsive .z-column-content {
@@ -409,4 +414,5 @@
             </grid>
         </groupbox>
     </window>
+
 </zk>
