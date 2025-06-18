@@ -20,9 +20,8 @@
 			}
 		}
 	</style>
-    <window border="normal" width="80%" hflex="min" vflex="min" style="margin: auto; margin-top: 20px;">
-        <borderlayout height="1700px">
-            <north title="📋 Dashboard Penilaian Data &amp; Technology MT Batch 20" maxsize="300" size="50%" splittable="true" collapsible="true">
+        <borderlayout>
+            <north title="📋 Dashboard Penilaian Data &amp; Technology MT Batch 20" maxsize="300" size="100%" splittable="true" collapsible="true">
                 <borderlayout>
                     <west title="Navbar" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
                         <vlayout>
@@ -35,5 +34,4 @@
                 </borderlayout>
             </north>
         </borderlayout>
-    </window>
 </zk>
