@@ -30,8 +30,8 @@
             <borderlayout>
                 <west title="Navbar" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
                     <vlayout>
-                        <button label="Home" image="/img/network.gif" width="125px" onClick="@command(&apos;navigateHome&apos;)"/>
-                        <button label="Dashboard" image="/img/network.gif" width="125px" onClick="@command(&apos;navigateDashboard&apos;)"/>
+                        <button id="Home" label="Home"/>
+                        <button id="btnDashboard" label="Dashboard"/>
                     </vlayout>
                 </west>
                 <center id="mainContent" border="none" autoscroll="true" self="@insert(content)"></center>

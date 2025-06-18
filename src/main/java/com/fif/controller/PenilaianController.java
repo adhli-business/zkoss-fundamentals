@@ -13,6 +13,8 @@ import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Include;
+
 
 import com.fif.model.Penilaian;
 import com.fif.service.PenilaianService;
@@ -30,6 +32,14 @@ public class PenilaianController extends SelectorComposer<Component> {
     private Intbox nilai;
 
     private Penilaian selected;
+
+    @Wire
+    private Include mainInclude;
+
+    @Listen("onClick = #btnDashboard")
+    public void goToDashboard() {
+        mainInclude.setSrc("/pages/Dashboard.zul");
+    }
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
