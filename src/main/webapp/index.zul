@@ -1,6 +1,9 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
+<?page id="indexPage" contentType="text/html;charset=UTF-8"?>
+
 <zk>
-    <window apply="com.fif.controller.PenilaianController" self="@define(content)">
+    <custom-attributes page="home"/>
+    <window title="Index" border="normal" width="100%" apply="com.fif.controller.PenilaianController" self="@define(content)">
         <!-- Form Tambah Data -->
         <groupbox mold="3d" width="100%" style="margin-bottom: 20px;">
             <caption label="➕ Tambah Data Penilaian Baru" />

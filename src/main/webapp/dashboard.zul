@@ -1,0 +1,9 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
+<zk>
+    <custom-attributes page="dashboard"/>
+	<window title="Dashboard" border="normal" width="100%" self="@define(content)">
+    <hlayout style="margin-bottom: 20px; flex-wrap: wrap;">
+				<textbox placeholder="Ini dashboard ya" hflex="1" style="max-width: 300px;"/>
+			</hlayout>
+	</window>
+</zk>
