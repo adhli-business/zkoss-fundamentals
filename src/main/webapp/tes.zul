@@ -1,0 +1,5 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
+<zk>
+	<window self="@define(content)">
+	</window>
+</zk>
