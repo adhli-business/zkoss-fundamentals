@@ -1,9 +1,183 @@
 <zk>
-	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('com.fif.MyViewModel')"
-		validationMessages="@id('vmsgs')">
-		<label value="Hello World"/>
-		<hlayout>count: <label value="@load(vm.count)" /></hlayout>
-		<button label="add" onClick="@command('cmd')"/>
+	<window title="📋 Dashboard Penilaian Data Technology MT Batch 20" border="normal" width="80%" style="margin: auto; margin-top: 20px;">
+		<zscript><![CDATA[
+			void hideAllDetails() {
+				detailBox1.setVisible(false);
+				detailBox2.setVisible(false);
+				detailBox3.setVisible(false);
+				detailBox4.setVisible(false);
+				detailBox5.setVisible(false);
+				detailBox6.setVisible(false);
+				detailBox7.setVisible(false);
+				detailBox8.setVisible(false);
+				detailBox9.setVisible(false);
+				detailBox10.setVisible(false);
+				detailBox11.setVisible(false);
+				detailBox12.setVisible(false);
+				detailBox13.setVisible(false);
+			}
+		]]></zscript>
+
+		<!-- Search Bar -->
+		<hlayout style="margin-bottom: 20px;">
+			<textbox placeholder="Cari berdasarkan nama..." width="300px" />
+			<button label="🔍 Cari" />
+		</hlayout>
+
+		<!-- List Nama -->
+		<grid width="100%" style="margin-bottom: 20px;">
+			<columns>
+				<column label="Nama Peserta" width="70%" />
+				<column label="Aksi" width="30%" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Angella Ananta Batubara" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox1.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Putra Adhli Falah" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox2.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Marcella Aurelia Yatijan" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox3.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Willman" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox4.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Alice Shizuka Hutagaol" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox5.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Ahmad Hafizh Assa'ad" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox6.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Michaell Abelard Hendra" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox7.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Raven Daniel Martin" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox8.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Nabila Karin" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox9.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Ahmad Ardra D" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox10.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Leonard Sean Lee" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox11.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Adenawati Hasim" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox12.setVisible(true);" />
+				</row>
+				<row>
+					<label value="Theopatra Kenny S" />
+					<button label="ℹ️ Detail" onClick="hideAllDetails(); detailBox13.setVisible(true);" />
+				</row>
+			</rows>
+		</grid>
+
+		<!-- Detail Boxes -->
+		<groupbox id="detailBox1" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Angella Ananta Batubara" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+
+		<groupbox id="detailBox2" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Putra Adhli Falah" />
+			<grid width="100%">
+				<columns>
+					<column label="Course" width="70%" />
+					<column label="Nilai" width="30%" />
+				</columns>
+				<rows>
+					<row><label value="SQL Fundamentals"/><label value="85"/></row>
+					<row><label value="Python Basics"/><label value="88"/></row>
+					<row><label value="Data Visualization"/><label value="90"/></row>
+				</rows>
+			</grid>
+		</groupbox>
+
+		<!-- 11 box berikut bisa kamu lengkapi sendiri -->
+		<groupbox id="detailBox3" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Marcella Aurelia Yatijan" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox4" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Willman" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox5" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Alice Shizuka Hutagaol" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox6" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Ahmad Hafizh Assa'ad" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox7" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Michaell Abelard Hendra" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox8" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Raven Daniel Martin" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox9" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Nabila Karin" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox10" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Ahmad Ardra D" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox11" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Leonard Sean Lee" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox12" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Adenawati Hasim" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+		<groupbox id="detailBox13" visible="false" mold="3d" width="100%">
+			<caption label="📄 Detail Nilai - Theopatra Kenny S" />
+			<label value="(Data belum tersedia)"/>
+		</groupbox>
+
+		<!-- Form Tambah Data -->
+		<groupbox mold="3d" width="100%" style="margin-top: 20px;">
+			<caption label="➕ Tambah Data Penilaian Baru" />
+			<grid width="100%">
+				<rows>
+					<row>
+						<label value="Nama:" width="100px" />
+						<textbox width="300px" placeholder="Masukkan nama" />
+					</row>
+					<row>
+						<label value="Course:" width="100px" />
+						<textbox width="300px" placeholder="Masukkan nama course" />
+					</row>
+					<row>
+						<label value="Nilai:" width="100px" />
+						<intbox width="100px" />
+					</row>
+					<row>
+						<separator />
+						<button label="💾 Simpan" />
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+
+
 	</window>
 </zk>

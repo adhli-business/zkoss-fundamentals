@@ -5,6 +5,7 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 
 public class MyViewModel {
+	
 
 	private int count;
 
