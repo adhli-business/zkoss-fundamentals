@@ -1,0 +1,29 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
+<zk>
+	<window title="Tambah Data Baru" border="normal" width="100%" self="@define(content)">
+		<!-- Form Tambah Data -->
+        <groupbox mold="3d" width="100%" style="margin-bottom: 20px;">
+            <caption label="➕ Tambah Data Penilaian Baru" />
+            <grid width="100%" sclass="grid-responsive">
+                <rows>
+                    <row>
+                        <label value="Nama:" width="100px" />
+                        <textbox id="nama" hflex="1" placeholder="Masukkan nama" />
+                    </row>
+                    <row>
+                        <label value="Course:" width="100px" />
+                        <textbox id="course" hflex="1" placeholder="Masukkan nama course" />
+                    </row>
+                    <row>
+                        <label value="Nilai:" width="100px" />
+                        <intbox id="nilai" width="100px" />
+                    </row>
+                    <row>
+                        <separator />
+                        <button id="btnSimpan" label="💾 Simpan" />
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+	</window>
+</zk>
