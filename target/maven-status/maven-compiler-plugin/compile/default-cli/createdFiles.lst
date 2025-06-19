@@ -1,4 +1,5 @@
 com\fif\dao\PenilaianDAO.class
+com\fif\model\Alamat.class
 com\fif\model\Penilaian.class
 com\fif\viewmodel\PenilaianViewModel.class
 com\fif\viewmodel\PenilaianFormViewModel.class
