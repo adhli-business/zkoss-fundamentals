@@ -28,15 +28,16 @@ public class PenilaianViewModel {
     }
 
     @Command
-    @NotifyChange("penilaianList")
-    public void search() {
-        if (searchKeyword == null || searchKeyword.trim().isEmpty()) {
+    @NotifyChange({"penilaianList", "searchKeyword"})
+    public void search(@BindingParam("keyword") String keyword) {
+        this.searchKeyword = keyword;
+        if (keyword == null || keyword.trim().isEmpty()) {
             penilaianList = new ListModelList<>(allData);
         } else {
-            String keyword = searchKeyword.toLowerCase().trim();
+            String searchTerm = keyword.toLowerCase().trim();
             List<Penilaian> filtered = allData.stream()
-                    .filter(p -> p.getNama().toLowerCase().contains(keyword)
-                    || p.getCourse().toLowerCase().contains(keyword))
+                    .filter(p -> p.getNama().toLowerCase().contains(searchTerm)
+                    || p.getCourse().toLowerCase().contains(searchTerm))
                     .collect(Collectors.toList());
             penilaianList = new ListModelList<>(filtered);
         }

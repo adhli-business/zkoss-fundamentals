@@ -1,34 +1,30 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <?page id="indexPage" contentType="text/html;charset=UTF-8"?>
-
 <zk>
     <custom-attributes page="home"/>
-    <window title="List Data Peserta" border="normal" width="100%" 
-            viewModel="@id('vm') @init('com.fif.viewmodel.PenilaianViewModel')" self="@define(content)">
-         <!-- Search Bar -->
+    <window title="List Data Peserta" border="normal" width="100%" viewModel="@id(&apos;vm&apos;) @init(&apos;com.fif.viewmodel.PenilaianViewModel&apos;)" self="@define(content)"><!-- Search Bar -->
         <hbox spacing="10px" style="margin-bottom: 10px;">
-            <textbox value="@bind(vm.searchKeyword)" onOK="@command('search')"
-                     placeholder="Cari nama atau course..." width="100%" />
-            <button label="Reset" onClick="@command('reset')" />
-        </hbox>
-
-        <!-- List Data -->
+            <textbox value="@bind(vm.searchKeyword)" onOK="@command(&apos;search&apos;, keyword=self.value)" 
+                     instant="true" onChange="@command(&apos;search&apos;, keyword=self.value)" 
+                     placeholder="Cari nama atau course..." width="100%"/>
+            <button label="Reset" onClick="@command(&apos;reset&apos;)"/>
+        </hbox><!-- List Data -->
         <listbox model="@load(vm.penilaianList)" width="100%">
             <listhead>
-                <listheader label="Nama" width="30%" />
-                <listheader label="Course" width="30%" />
-                <listheader label="Nilai" width="20%" />
-                <listheader label="Aksi" width="20%" />
+                <listheader label="Nama" width="30%"/>
+                <listheader label="Course" width="30%"/>
+                <listheader label="Nilai" width="20%"/>
+                <listheader label="Aksi" width="20%"/>
             </listhead>
             <template name="model" var="item">
                 <listitem>
-                    <listcell label="@load(item.nama)" />
-                    <listcell label="@load(item.course)" />
-                    <listcell label="@load(item.nilai)" />
+                    <listcell label="@load(item.nama)"/>
+                    <listcell label="@load(item.course)"/>
+                    <listcell label="@load(item.nilai)"/>
                     <listcell>
                         <hbox spacing="10px">
-                            <button label="Edit" onClick="@command('edit', penilaian=item)" />
-                            <button label="Delete" onClick="@command('delete', penilaian=item)" />
+                            <button label="Edit" onClick="@command(&apos;edit&apos;, penilaian=item)"/>
+                            <button label="Delete" onClick="@command(&apos;delete&apos;, penilaian=item)"/>
                         </hbox>
                     </listcell>
                 </listitem>
