@@ -89,21 +89,31 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- JPA(Hibernate) and HSQL dependencies -->
-		<dependency>
+	<dependency>
 	  		<groupId>org.hibernate</groupId>
 	  		<artifactId>hibernate-entitymanager</artifactId>
 	  		<version>${hibernate.version}</version>
 	  	</dependency>
-		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.4.1</version>
-		</dependency>
-		
+        <!-- ZK-Spring Integration -->
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zkspring-core</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zkspring-security</artifactId>
+            <version>4.0.1</version>
+        </dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.4.1</version>
 		</dependency>
 	</dependencies>
 	<build>

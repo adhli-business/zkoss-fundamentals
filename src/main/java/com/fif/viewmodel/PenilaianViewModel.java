@@ -7,22 +7,45 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.ListModelList;
 
 import com.fif.model.Penilaian;
 import com.fif.service.PenilaianService;
 
+@VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class PenilaianViewModel {
 
-    private PenilaianService service = new PenilaianService();
+    @WireVariable("penilaianService")
+    private PenilaianService service;
     private ListModelList<Penilaian> penilaianList;
     private String searchKeyword = "";
     private List<Penilaian> allData;
     private Penilaian selectedPenilaian;
 
     @Init
+    @NotifyChange({"penilaianList", "allData"})
     public void init() {
+        loadData();
+
+        // Check if we need to refresh from a previous save
+        Boolean refreshRequired = (Boolean) Executions.getCurrent().getAttribute("REFRESH_REQUIRED");
+        if (refreshRequired != null && refreshRequired) {
+            Executions.getCurrent().removeAttribute("REFRESH_REQUIRED");
+            refreshData();
+        }
+    }
+
+    @Command
+    @NotifyChange({"penilaianList", "allData"})
+    public void refreshData() {
+        loadData();
+    }
+
+    private void loadData() {
         allData = service.getAll();
         penilaianList = new ListModelList<>(allData);
     }
@@ -52,7 +75,7 @@ public class PenilaianViewModel {
 
     @Command
     public void edit(@BindingParam("penilaian") Penilaian penilaian) {
-        org.zkoss.zk.ui.Executions.sendRedirect("index.zul?id=" + penilaian.getId());
+        org.zkoss.zk.ui.Executions.sendRedirect("form.zul?id=" + penilaian.getId());
     }
 
     @Command

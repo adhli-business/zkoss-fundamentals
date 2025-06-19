@@ -8,9 +8,16 @@
 	<display-name>hello-world</display-name>
 
 	<!-- //// -->
-
 	<!-- Spring configuration -->
 	<!-- Initialize spring context -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext.xml
+			/WEB-INF/spring-config.xml
+		</param-value>
+	</context-param>
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

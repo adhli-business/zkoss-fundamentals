@@ -2,7 +2,7 @@
 <?page id="indexPage" contentType="text/html;charset=UTF-8"?>
 <zk>
     <custom-attributes page="home"/>
-    <window title="List Data Peserta" border="normal" width="100%" viewModel="@id(&apos;vm&apos;) @init(&apos;com.fif.viewmodel.PenilaianViewModel&apos;)" self="@define(content)"><!-- Search Bar -->
+    <window title="List Data Peserta" border="normal" width="100%" viewModel="@id('vm') @init('com.fif.viewmodel.PenilaianViewModel')" self="@define(content)"><!-- Search Bar -->
         <hbox spacing="10px" style="margin-bottom: 10px;">
             <textbox value="@bind(vm.searchKeyword)" onOK="@command(&apos;search&apos;, keyword=self.value)" instant="true" onChange="@command(&apos;search&apos;, keyword=self.value)" placeholder="Cari nama atau course..." width="100%"/>
             <button label="Reset" sclass="btn btn-primary btn-sm" onClick="@command(&apos;reset&apos;)"/>

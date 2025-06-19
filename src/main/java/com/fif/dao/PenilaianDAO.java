@@ -1,41 +1,48 @@
 package com.fif.dao;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fif.model.Penilaian;
 
+@Repository("penilaianDAO")
+@Transactional
 public class PenilaianDAO {
 
-    private static final List<Penilaian> data = new ArrayList<>();
-    private static int counter = 1;
+    @PersistenceContext(unitName = "myapp")
+    private EntityManager entityManager;
 
-    public static List<Penilaian> findAll() {
-        return new ArrayList<>(data);
+    public List<Penilaian> findAll() {
+        TypedQuery<Penilaian> query = entityManager.createQuery("SELECT p FROM Penilaian p", Penilaian.class);
+        return query.getResultList();
     }
 
-    public static void save(Penilaian p) {
-        p.setId(counter++);
-        data.add(p);
-    }
-
-    public static void delete(Penilaian p) {
-        data.removeIf(d -> d.getId() == p.getId());
-    }
-
-    public static void update(Penilaian updated) {
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).getId() == updated.getId()) {
-                data.set(i, updated);
-                return;
-            }
+    public void save(Penilaian p) {
+        if (p.getId() == 0) {
+            entityManager.persist(p);
+        } else {
+            entityManager.merge(p);
         }
     }
 
-    public static Penilaian findById(int id) {
-        return data.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .orElse(null);
+    public void delete(Penilaian p) {
+        Penilaian entity = entityManager.find(Penilaian.class, p.getId());
+        if (entity != null) {
+            entityManager.remove(entity);
+        }
+    }
+
+    public void update(Penilaian updated) {
+        entityManager.merge(updated);
+    }
+
+    public Penilaian findById(int id) {
+        return entityManager.find(Penilaian.class, id);
     }
 }
