@@ -30,11 +30,11 @@
             <borderlayout>
                 <west title="Navbar" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
                     <vlayout>
-                        <button id="Home" label="Home"/>
-                        <button id="btnDashboard" label="Dashboard"/>
+                        <button id="Home" label="Home" href="index.zul"/>
+                        <button id="btnDashboard" label="Dashboard" href="index2.zul"/>
                     </vlayout>
                 </west>
-                <center id="mainContent" border="none" autoscroll="true" self="@insert(content)"></center>
+                <center id="mainContent" border="none" autoscroll="true" self="@insert(content)" />
             </borderlayout>
         </north>
     </borderlayout>
