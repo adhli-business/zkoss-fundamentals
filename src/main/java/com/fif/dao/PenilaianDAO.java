@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.fif.model.Penilaian;
 
-
 public class PenilaianDAO {
+
     private static final List<Penilaian> data = new ArrayList<>();
     private static int counter = 1;
 
@@ -30,5 +30,12 @@ public class PenilaianDAO {
                 return;
             }
         }
+    }
+
+    public static Penilaian findById(int id) {
+        return data.stream()
+                .filter(p -> p.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 }

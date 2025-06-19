@@ -6,11 +6,12 @@ import com.fif.dao.PenilaianDAO;
 import com.fif.model.Penilaian;
 
 public class PenilaianService {
+
     public List<Penilaian> getAll() {
         return PenilaianDAO.findAll();
     }
 
-    public void save(Penilaian p) {
+    public void insert(Penilaian p) {
         PenilaianDAO.save(p);
     }
 
@@ -20,5 +21,9 @@ public class PenilaianService {
 
     public void update(Penilaian p) {
         PenilaianDAO.update(p);
+    }
+
+    public Penilaian getById(int id) {
+        return PenilaianDAO.findById(id);
     }
 }

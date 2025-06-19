@@ -59,7 +59,7 @@ public class PenilaianFormController extends SelectorComposer<Component> {
             p.setNama(nama.getValue());
             p.setCourse(course.getValue());
             p.setNilai(nilai.getValue());
-            service.save(p);
+            service.insert(p);
         } else {
             selected.setNama(nama.getValue());
             selected.setCourse(course.getValue());

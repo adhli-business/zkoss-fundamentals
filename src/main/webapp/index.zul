@@ -3,27 +3,28 @@
 
 <zk>
     <custom-attributes page="home"/>
-    <window title="Tambah Data" border="normal" width="100%" apply="com.fif.controller.PenilaianFormController" self="@define(content)">
+    <window title="Tambah Data" border="normal" width="100%" 
+            viewModel="@id('vm') @init('com.fif.viewmodel.PenilaianFormViewModel')" self="@define(content)">
         <!-- Form Tambah Data -->
         <groupbox mold="3d" width="100%" style="margin-bottom: 20px;">
-            <caption label="➕ Tambah Data Penilaian Baru" />
+            <caption label="➕ Tambah/Edit Data Penilaian" />
             <grid width="100%" sclass="grid-responsive">
                 <rows>
                     <row>
                         <label value="Nama:" width="100px" />
-                        <textbox id="nama" hflex="1" placeholder="Masukkan nama" />
+                        <textbox value="@bind(vm.penilaian.nama)" hflex="1" placeholder="Masukkan nama" />
                     </row>
                     <row>
                         <label value="Course:" width="100px" />
-                        <textbox id="course" hflex="1" placeholder="Masukkan nama course" />
+                        <textbox value="@bind(vm.penilaian.course)" hflex="1" placeholder="Masukkan nama course" />
                     </row>
                     <row>
                         <label value="Nilai:" width="100px" />
-                        <intbox id="nilai" width="100px" />
+                        <intbox value="@bind(vm.penilaian.nilai)" width="100px" />
                     </row>
                     <row>
                         <separator />
-                        <button id="btnSimpan" label="💾 Simpan" />
+                        <button onClick="@command('save')" label="💾 Simpan" />
                     </row>
                 </rows>
             </grid>
