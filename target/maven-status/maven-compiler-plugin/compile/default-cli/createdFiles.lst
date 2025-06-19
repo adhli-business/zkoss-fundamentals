@@ -1,5 +1,5 @@
 com\fif\dao\PenilaianDAO.class
-com\fif\controller\PenilaianFormController.class
 com\fif\model\Penilaian.class
-com\fif\controller\PenilaianController.class
+com\fif\viewmodel\PenilaianViewModel.class
+com\fif\viewmodel\PenilaianFormViewModel.class
 com\fif\service\PenilaianService.class
