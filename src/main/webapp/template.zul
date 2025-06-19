@@ -1,5 +1,5 @@
 <zk>
-	<style>
+    <style>
         .nav-button-active {
             background-color: #007bff;
             color: white;
@@ -25,17 +25,20 @@
             }
         }
     </style>
-	<borderlayout>
-		<north title="📋 Dashboard Penilaian Data &amp; Technology MT Batch 20" maxsize="300" size="100%" splittable="true" collapsible="true">
-			<borderlayout>
-				<west title="Navbar" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
-					<vlayout>
-						<button id="Home" label="Tambah Data" href="index.zul"/>
-						<button id="btnDashboard" label="Lihat Data" href="index2.zul"/>
-					</vlayout>
-				</west>
-				<center id="mainContent" border="none" autoscroll="true" self="@insert(content)"/>
-			</borderlayout>
-		</north>
-	</borderlayout>
+    <borderlayout>
+        <north title="📋 Dashboard Penilaian Data &amp; Technology MT Batch 20" maxsize="300" size="90%" splittable="true" collapsible="true">
+            <borderlayout>
+                <west title="Navbar" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
+                    <vlayout>
+                        <button id="Home" label="Tambah Data" href="index.zul"/>
+                        <button id="btnDashboard" label="Lihat Data" href="index2.zul"/>
+                    </vlayout>
+                </west>
+                <center id="mainContent" border="none" autoscroll="true" self="@insert(content)"/>
+            </borderlayout>
+        </north>
+        <south style="background-color:white;">
+            <div style="color:black; text-align: center;">  Adhli &amp; Vincent | 2025</div>
+        </south>
+    </borderlayout>
 </zk>

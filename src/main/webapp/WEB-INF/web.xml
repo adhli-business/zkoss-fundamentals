@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"> 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<description><![CDATA[My ZK Application]]></description>
 	<display-name>hello-world</display-name>
 
 	<!-- //// -->
+
+	<!-- Spring configuration -->
+	<!-- Initialize spring context -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- Enable webapp Scopes-->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
 	<!-- ZK -->
 	<listener>
 		<description>ZK listener for session cleanup</description>
@@ -125,7 +136,7 @@
 		<url-pattern>*.dsp</url-pattern>
 	</servlet-mapping>
 	-->
-	
+
 	<!-- /////////// -->
 	<!-- [Optional] Session timeout -->
 	<session-config>
