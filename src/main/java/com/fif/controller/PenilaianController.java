@@ -85,3 +85,5 @@ public class PenilaianController extends SelectorComposer<Component> {
         renderData(allData);
     }
 }
+
+//ini mvvm
