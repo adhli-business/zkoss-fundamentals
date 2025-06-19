@@ -4,12 +4,10 @@
     <custom-attributes page="home"/>
     <window title="List Data Peserta" border="normal" width="100%" viewModel="@id(&apos;vm&apos;) @init(&apos;com.fif.viewmodel.PenilaianViewModel&apos;)" self="@define(content)"><!-- Search Bar -->
         <hbox spacing="10px" style="margin-bottom: 10px;">
-            <textbox value="@bind(vm.searchKeyword)" onOK="@command(&apos;search&apos;, keyword=self.value)" 
-                     instant="true" onChange="@command(&apos;search&apos;, keyword=self.value)" 
-                     placeholder="Cari nama atau course..." width="100%"/>
+            <textbox value="@bind(vm.searchKeyword)" onOK="@command(&apos;search&apos;, keyword=self.value)" instant="true" onChange="@command(&apos;search&apos;, keyword=self.value)" placeholder="Cari nama atau course..." width="100%"/>
             <button label="Reset" onClick="@command(&apos;reset&apos;)"/>
         </hbox><!-- List Data -->
-        <listbox model="@load(vm.penilaianList)" width="100%">
+        <listbox model="@load(vm.penilaianList)" width="100%" mold="paging" pageSize="5">
             <listhead>
                 <listheader label="Nama" width="30%"/>
                 <listheader label="Course" width="30%"/>
