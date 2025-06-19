@@ -4,6 +4,13 @@
 <zk>
     <custom-attributes page="home"/>
     <window title="List Data Peserta" border="normal" width="100%" apply="com.fif.controller.PenilaianController" self="@define(content)">
+         <!-- Search Bar -->
+        <hbox spacing="10px" style="margin-bottom: 10px;">
+            <textbox id="searchBox" placeholder="Cari nama atau course..." width="100%" />
+          <!--  <button label="Search" id="btnSearch" /> -->
+            <button label="Reset" id="btnReset" />
+        </hbox>
+
         <!-- List Data -->
         <listbox id="listboxPenilaian" width="100%">
             <listhead>

@@ -1,15 +1,14 @@
 package com.fif.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.InputEvent;
 import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Button;
-import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listcell;
-import org.zkoss.zul.Listitem;
+import org.zkoss.zul.*;
 
 import com.fif.model.Penilaian;
 import com.fif.service.PenilaianService;
@@ -17,18 +16,22 @@ import com.fif.service.PenilaianService;
 public class PenilaianController extends SelectorComposer<Component> {
 
     private final PenilaianService service = new PenilaianService();
+    private List<Penilaian> allData;
 
     @Wire
     private Listbox listboxPenilaian;
 
+    @Wire
+    private Textbox searchBox;
+
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        refreshData();
+        allData = service.getAll(); // simpan semua data
+        renderData(allData);
     }
 
-    public void refreshData() {
-        List<Penilaian> list = service.getAll();
+    public void renderData(List<Penilaian> list) {
         listboxPenilaian.setModel(new ListModelList<>(list));
         listboxPenilaian.setItemRenderer((Listitem item, Penilaian data, int index) -> {
             item.getChildren().clear();
@@ -46,12 +49,39 @@ public class PenilaianController extends SelectorComposer<Component> {
 
             btnDelete.addEventListener("onClick", e -> {
                 service.delete(data);
-                refreshData();
+                allData = service.getAll(); // refresh data
+                renderData(allData);
             });
 
             aksi.appendChild(btnEdit);
             aksi.appendChild(btnDelete);
             item.appendChild(aksi);
         });
+    }
+
+    @Listen("onChanging = #searchBox")
+    public void onTyping(InputEvent event) {
+        String keyword = event.getValue().toLowerCase().trim();
+        List<Penilaian> filtered = allData.stream()
+                .filter(p -> p.getNama().toLowerCase().contains(keyword)
+                        || p.getCourse().toLowerCase().contains(keyword))
+                .collect(Collectors.toList());
+        renderData(filtered);
+    }
+
+    @Listen("onClick = #btnSearch")
+    public void onSearch() {
+        String keyword = searchBox.getValue().toLowerCase().trim();
+        List<Penilaian> filtered = allData.stream()
+                .filter(p -> p.getNama().toLowerCase().contains(keyword)
+                        || p.getCourse().toLowerCase().contains(keyword))
+                .collect(Collectors.toList());
+        renderData(filtered);
+    }
+
+    @Listen("onClick = #btnReset")
+    public void onReset() {
+        searchBox.setValue("");
+        renderData(allData);
     }
 }
