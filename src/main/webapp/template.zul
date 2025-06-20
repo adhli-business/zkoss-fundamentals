@@ -38,7 +38,10 @@
             </borderlayout>
         </north>
         <south style="background-color:white;">
-            <div style="color:black; text-align: center;">  Adhli &amp; Vincent | 2025</div>
+        <!-- <div style="color:black; text-align: center;">  Adhli &amp; Vincent | 2025</div> -->
+            <div style="text-align:right; padding:10px;">
+                <button href="/logout" label="Logout" style="background-color: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;"/>
+            </div>
         </south>
     </borderlayout>
 </zk>

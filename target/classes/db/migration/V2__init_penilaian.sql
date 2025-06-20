@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS penilaian (
     id SERIAL PRIMARY KEY,
     course VARCHAR(255),
     nama VARCHAR(255),
-    nilai INT;
+    nilai INT
 );
 
 INSERT INTO penilaian (id, course, nama, nilai) VALUES
