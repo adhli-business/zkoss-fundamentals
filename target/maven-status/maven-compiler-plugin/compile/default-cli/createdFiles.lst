@@ -1,5 +1,11 @@
 com\fif\dao\PenilaianDAO.class
-com\fif\controller\PenilaianFormController.class
+com\fif\service\impl\UserServiceImpl.class
+com\fif\viewmodel\PenilaianViewModel.class
+com\fif\viewmodel\PenilaianFormViewModel.class
+com\fif\model\Alamat.class
+com\fif\model\User.class
+com\fif\service\impl\UserDao.class
+com\fif\model\Role.class
+com\fif\config\SecurityConfig.class
 com\fif\model\Penilaian.class
-com\fif\controller\PenilaianController.class
 com\fif\service\PenilaianService.class

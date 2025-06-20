@@ -1,10 +1,47 @@
 package com.fif.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "penilaian")
 public class Penilaian {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
     private String nama;
+
+    @Column(nullable = false)
     private String course;
+
+    @Column(nullable = false)
     private int nilai;
+
+    public boolean isValid() {
+        return nama != null && !nama.trim().isEmpty()
+                && course != null && !course.trim().isEmpty()
+                && nilai >= 0 && nilai <= 100;
+    }
+
+    public String getValidationMessage() {
+        if (nama == null || nama.trim().isEmpty()) {
+            return "Nama harus diisi";
+        }
+        if (course == null || course.trim().isEmpty()) {
+            return "Course harus diisi";
+        }
+        if (nilai < 0 || nilai > 100) {
+            return "Nilai harus antara 0 dan 100";
+        }
+        return null;
+    }
 
     public Penilaian() {
     }
