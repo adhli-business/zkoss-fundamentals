@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.fif</groupId>
@@ -30,7 +31,7 @@
 		</repository>
 		<repository>
 			<id>ZK EVAL</id>
-      		<name>ZK Evaluation Repository</name>
+			<name>ZK Evaluation Repository</name>
 			<url>https://mavensync.zkoss.org/eval</url>
 		</repository>
 	</repositories>
@@ -89,22 +90,22 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- JPA(Hibernate) and HSQL dependencies -->
-	<dependency>
-	  		<groupId>org.hibernate</groupId>
-	  		<artifactId>hibernate-entitymanager</artifactId>
-	  		<version>${hibernate.version}</version>
-	  	</dependency>
-        <!-- ZK-Spring Integration -->
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkspring-core</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkspring-security</artifactId>
-            <version>4.0.1</version>
-        </dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- ZK-Spring Integration -->
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkspring-core</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkspring-security</artifactId>
+			<version>4.0.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -216,6 +217,19 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>9.22.3</version> <!-- Use the latest version -->
+				<configuration>
+					<url>jdbc:postgresql://localhost:5432/myapp_db</url>
+					<user>postgres</user>
+					<password>password</password>
+					<locations>
+						<location>classpath:db/migration</location>
+					</locations>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

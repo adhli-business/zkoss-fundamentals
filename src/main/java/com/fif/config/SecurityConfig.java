@@ -22,8 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/index.zul")
-                .hasRole("ADMIN")
+                .antMatchers("/login.zul", "/resources/**", "/zkau/**").permitAll()
+                .antMatchers("/index.zul").hasAnyRole("ADMIN", "USER")
+                //.antMatchers("/index.zul").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login.zul")
@@ -31,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
+                .logoutSuccessUrl("/login.zul")
                 .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/accessDenied.zul");
     }
