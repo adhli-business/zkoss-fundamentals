@@ -1,0 +1,50 @@
+<?page title="Access Denied" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <style>
+        .access-denied-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+        }
+        .error-code {
+            font-size: 72px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+        .error-message {
+            font-size: 24px;
+            color: #343a40;
+            margin-bottom: 15px;
+        }
+        .error-description {
+            color: #6c757d;
+            margin-bottom: 25px;
+        }
+        .home-button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .home-button:hover {
+            background: #0056b3;
+        }
+    </style>
+    
+    <div height="100vh" style="display: flex; align-items: center; justify-content: center;">
+        <div sclass="access-denied-container" width="500px">
+            <div sclass="error-code">403</div>
+            <div sclass="error-message">Access Denied</div>
+            <div sclass="error-description">
+                Sorry, you don't have permission to access this page.
+                Please contact your administrator if you believe this is an error.
+            </div>
+            <button sclass="home-button" label="Back to Home" 
+                    onClick='Executions.sendRedirect("/index2.zul")'/>
+        </div>
+    </div>
+</zk>
