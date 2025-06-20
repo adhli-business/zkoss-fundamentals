@@ -1,6 +1,9 @@
 com\fif\dao\PenilaianDAO.class
-com\fif\model\Alamat.class
-com\fif\model\Penilaian.class
 com\fif\viewmodel\PenilaianViewModel.class
 com\fif\viewmodel\PenilaianFormViewModel.class
+com\fif\model\Alamat.class
+com\fif\model\User.class
+com\fif\dao\UserDAO.class
+com\fif\model\Role.class
+com\fif\model\Penilaian.class
 com\fif\service\PenilaianService.class

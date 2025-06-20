@@ -20,7 +20,7 @@
                     </row>
                     <row>
                         <label value="Nilai:" width="100px" />
-                        <intbox value="@bind(vm.penilaian.nilai)" width="100px" />
+                        <intbox value="@bind(vm.penilaian.nilai)" width="100px" placeholder="Nilai 0-100"/>
                     </row>
                     <row>
                         <separator />

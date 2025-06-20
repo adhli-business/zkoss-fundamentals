@@ -18,11 +18,11 @@
                 </row>
                 <row>
                     <label value="Nilai *"/>
-                    <intbox value="@bind(vm.penilaian.nilai)" width="100%" 
-                           constraint="no empty,min 0 max 100: Nilai harus diisi antara 0-100"/>
+                    <intbox value="@bind(vm.penilaian.nilai)" width="100%" placeholder="Nilai 0-100" constraint="no empty: Nilai harus diisi"/>
                 </row>
             </rows>
-        </grid>        <div style="text-align: center; padding: 20px;">
+        </grid>
+        <div style="text-align: center; padding: 20px;">
             <button label="Simpan" onClick="@command('save')" autodisable="self"/>
             <button label="Reset" onClick="@command('reset')"/>
             <button label="Kembali" href="index2.zul"/>
