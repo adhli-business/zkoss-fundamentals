@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* full vertical height */
+            height: 100vh;
         }
 
         .login-box {
@@ -59,11 +59,36 @@
             text-align: center;
             font-style: italic;
         }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .system-name {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
     </style>
+
     <div sclass="page-center">
-        <window title="Login" border="normal" closable="false" sclass="login-box">
+        <window title="Login" border="normal" closable="false" sclass="login-box" style="text-align: center;">
             <vlayout spacing="15px">
-                <label value="🔐 Please Login" style="font-size:16px; font-weight:bold; text-align:center"/>
+                <!-- Nama Sistem -->
+                <label value="🛠️ Sistem Penilaian Management Trainee" sclass="system-name"/>
+                <!-- Logo -->
+                <div sclass="logo">
+                    <image src="img/Logo_FIFGroup.jpeg" width="120px"/>
+                </div>
+
+
+                <!-- Judul login -->
+                <!-- <label value="🔐 Please Login" style="font-size:16px; font-weight:bold; text-align:center"/> -->
+
+                <!-- Form login -->
                 <h:form action="${pageContext.request.contextPath}/login.zul" method="POST">
                     <vlayout spacing="10px">
                         <hlayout>
@@ -82,10 +107,12 @@
                         </div>
                     </vlayout>
                 </h:form>
+
+                <!-- Error label -->
                 <label value="❌ Invalid username or password" visible="${param.error != null}" sclass="error-label"/>
             </vlayout>
-            <zscript>
-<![CDATA[
+
+            <zscript><![CDATA[
                 void togglePassword() {
                     if ("password".equals(pwdBox.getType())) {
                         pwdBox.setType("text");
