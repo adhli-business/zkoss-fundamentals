@@ -1,0 +1,130 @@
+<zk xmlns:h="native">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 30px;
+            width: 450px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .btn-login {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3;
+            cursor: pointer;
+        }
+
+        .toggle-eye {
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+
+        .centered {
+            display: flex;
+            justify-content: center;
+        }
+
+        .error-label {
+            color: red;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .system-name {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <div sclass="page-center">
+        <window title="Login" border="normal" closable="false" sclass="login-box" style="text-align: center;">
+            <vlayout spacing="15px">
+                <!-- Nama Sistem -->
+                <label value="🛠️ Sistem Penilaian Management Trainee" sclass="system-name"/>
+                <!-- Logo -->
+                <div sclass="logo">
+                    <image src="img/Logo_FIFGroup.jpeg" width="120px"/>
+                </div>
+
+
+                <!-- Judul login -->
+                <!-- <label value="🔐 Please Login" style="font-size:16px; font-weight:bold; text-align:center"/> -->
+
+                <!-- Form login -->
+                <h:form action="${pageContext.request.contextPath}/login.zul" method="POST">
+                    <vlayout spacing="10px">
+                        <hlayout>
+                            <label value="👤 Username:" width="90px"/>
+                            <textbox name="username" hflex="1" placeholder="Enter username" sclass="input-field"/>
+                        </hlayout>
+                        <hlayout>
+                            <label value="🔑 Password:" width="90px"/>
+                            <hlayout hflex="1">
+                                <textbox id="pwdBox" name="password" type="password" hflex="1" placeholder="Enter password" sclass="input-field"/>
+                                <label id="eyeIcon" sclass="toggle-eye" value="👁️" tooltiptext="Show Password" onClick="togglePassword()"/>
+                            </hlayout>
+                        </hlayout>
+                        <div class="centered">
+                            <button type="submit" label="Login" sclass="btn-login"/>
+                        </div>
+                    </vlayout>
+                </h:form>
+
+                <!-- Error label -->
+                <label value="❌ Invalid username or password" visible="${param.error != null}" sclass="error-label"/>
+            </vlayout>
+
+            <zscript><![CDATA[
+                void togglePassword() {
+                    if ("password".equals(pwdBox.getType())) {
+                        pwdBox.setType("text");
+                        eyeIcon.setValue("🙈");
+                        eyeIcon.setTooltiptext("Hide Password");
+                    } else {
+                        pwdBox.setType("password");
+                        eyeIcon.setValue("👁️");
+                        eyeIcon.setTooltiptext("Show Password");
+                    }
+                }
+            ]]></zscript>
+        </window>
+    </div>
+</zk>

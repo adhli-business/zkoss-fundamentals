@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"> 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<description><![CDATA[My ZK Application]]></description>
 	<display-name>hello-world</display-name>
 
 	<!-- //// -->
+	<!-- Spring configuration -->
+	<!-- Initialize spring context -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext.xml
+			/WEB-INF/spring-config.xml
+		</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- Enable webapp Scopes-->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
+	<!-- Spring Security Filters -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<!-- ZK -->
 	<listener>
 		<description>ZK listener for session cleanup</description>
@@ -125,7 +153,7 @@
 		<url-pattern>*.dsp</url-pattern>
 	</servlet-mapping>
 	-->
-	
+
 	<!-- /////////// -->
 	<!-- [Optional] Session timeout -->
 	<session-config>
@@ -191,9 +219,9 @@
 	</mime-mapping>
 
 	<welcome-file-list>
-		<welcome-file>index.zul</welcome-file>
-		<welcome-file>index.zhtml</welcome-file>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
+		<welcome-file>login.zul</welcome-file>
+		<welcome-file>login.zhtml</welcome-file>
+		<welcome-file>login.html</welcome-file>
+		<welcome-file>login.htm</welcome-file>
 	</welcome-file-list>
 </web-app>

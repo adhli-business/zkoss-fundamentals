@@ -1,5 +1,5 @@
 <zk>
-	<style>
+    <style>
         .nav-button-active {
             background-color: #007bff;
             color: white;
@@ -25,17 +25,39 @@
             }
         }
     </style>
-	<borderlayout>
-		<north title="📋 Dashboard Penilaian Data &amp; Technology MT Batch 20" maxsize="300" size="100%" splittable="true" collapsible="true">
-			<borderlayout>
-				<west title="Navbar" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
-					<vlayout>
-						<button id="Home" label="Tambah Data" href="index.zul"/>
-						<button id="btnDashboard" label="Lihat Data" href="index2.zul"/>
-					</vlayout>
-				</west>
-				<center id="mainContent" border="none" autoscroll="true" self="@insert(content)"/>
-			</borderlayout>
-		</north>
-	</borderlayout>
+    <window id="splash" width="100%" height="100%" border="none" mode="overlapped" style="background:#FFFFFF; position:absolute; top:0; left:0; z-index:2000;">
+        <style>
+        .rotate-logo {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+        <vlayout width="100%" height="100%" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <image src="img/Logo_FIFGroup.jpeg" width="150px" sclass="rotate-logo"/>
+            <label style="font-size:18px; margin-top:10px;"/>
+        </vlayout>
+        <timer id="splashTimer" delay="1000" repeats="false" onTimer="splash.setVisible(false); splashTimer.stop();"/>
+    </window>
+    <borderlayout>
+        <north title="📋 Dashboard Penilaian Data &amp; Technology MT Batch 20" maxsize="300" size="90%" splittable="true" collapsible="true">
+            <borderlayout>
+                <west title="Navbar" size="25%" flex="true" maxsize="250" splittable="true" collapsible="true">
+                    <vlayout>
+                        <button id="Home" label="Tambah Data" href="index.zul"/>
+                        <button id="btnDashboard" label="Lihat Data" href="index2.zul"/>
+                    </vlayout>
+                </west>
+                <center id="mainContent" border="none" autoscroll="true" self="@insert(content)"/>
+            </borderlayout>
+        </north>
+        <south style="background-color:white;"><!-- <div style="color:black; text-align: center;">  Adhli &amp; Vincent | 2025</div> -->
+            <div style="text-align:right; padding:10px;">
+                <button href="/logout" label="Logout" style="background-color: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;"/>
+            </div>
+        </south>
+    </borderlayout>
 </zk>

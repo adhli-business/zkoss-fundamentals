@@ -1,5 +1,12 @@
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\config\SecurityConfig.java
 D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\model\Penilaian.java
-D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\controller\PenilaianFormController.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\model\User.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\service\impl\UserServiceImpl.java
 D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\dao\PenilaianDAO.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\util\SecurityUtil.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\viewmodel\PenilaianViewModel.java
 D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\service\PenilaianService.java
-D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\controller\PenilaianController.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\service\impl\UserDao.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\viewmodel\PenilaianFormViewModel.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\model\Alamat.java
+D:\zkoss-fundamentals\hello-world\src\main\java\com\fif\model\Role.java
